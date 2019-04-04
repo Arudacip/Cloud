@@ -13,4 +13,4 @@ sockets = Sockets(app)
 
 @app.route('/')
 def hello():
-    return render_template('myApp/FrontEnd/HTML/static/index.html')
+    return render_template('myApp/FrontEnd/HTML/index.html')
