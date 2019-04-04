@@ -13,4 +13,9 @@ sockets = Sockets(app)
 
 @app.route('/')
 def hello():
-    return render_template('myApp/FrontEnd/HTML/index.html')
+    return render_template('index.html')
+
+
+if __name__ == '__main__':
+    app.debug = True
+    app.run(host = 'localhost', port=80)
