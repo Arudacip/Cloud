@@ -6,22 +6,18 @@ from flask import Flask, render_template
 from flask_sockets import Sockets
 from myApp.BackEnd.ChatBackEnd import ChatBackend
 
-REDIS_URL = os.environ['REDIS_URL']
-REDIS_CHAN = 'chat'
-
 app = Flask(__name__)
 app.debug = 'DEBUG' in os.environ
 
 sockets = Sockets(app)
-redis = redis.from_url(REDIS_URL)
 
-chats = ChatBackend(app, redis, REDIS_CHAN)
+#chats = ChatBackend(app, redis, REDIS_CHAN)
 
 @app.route('/')
 def hello():
     return '<h3>HELLO WORLD!</h3>'#render_template('index.html')
 
-@sockets.route('/submit')
+'''@sockets.route('/submit')
 def inbox(ws):
     """Receives incoming chat messages, inserts them into Redis."""
     while not ws.closed:
@@ -39,4 +35,4 @@ def outbox(ws):
     chats.register(ws)
     while not ws.closed:
         # Context switch while `ChatBackend.start` is running in the background.
-        gevent.sleep(0.1)
+        gevent.sleep(0.1)'''
