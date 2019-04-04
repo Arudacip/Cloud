@@ -19,7 +19,7 @@ chats = ChatBackend(app, redis, REDIS_CHAN)
 
 @app.route('/')
 def hello():
-    return render_template('index.html')
+    return '<h3>HELLO WORLD!</h3>'#render_template('index.html')
 
 @sockets.route('/submit')
 def inbox(ws):
