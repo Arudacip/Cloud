@@ -1,8 +1,13 @@
 import os
 
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 from flask_sockets import Sockets
 from jsonConverter import convertToJson
+
+from Model.texto import texto
+from Model.model import model
+
+from Processing.game import game
 
 #Hello World
 app = Flask(__name__)
@@ -29,7 +34,20 @@ def game_start():
     '''
         Requisição para iniciar o game
     '''
-    return render_template('game.html')
+    return render_template('game.html', isStart=True)
+
+@app.route('/game', methods=['POST'])
+def game_post():
+    '''
+        Requisição para iniciar o game
+    '''
+    jogo = game()
+    if(request.form.get('isStart') is not None):
+        Modelo = jogo.firstPost()
+    else:
+        Modelo = jogo.notFirstPost()
+    
+    return render_template('game.html', model=Modelo)
 
 '''@app.route('/api/<path:path>', methods=['GET']) #Impede que a API seja acessa por browser
 def error_OnlyPost():
@@ -38,3 +56,6 @@ def error_OnlyPost():
 if __name__ == '__main__':
     app.debug = True
     app.run(host = 'localhost', port=5050)
+
+
+
