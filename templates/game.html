@@ -13,7 +13,12 @@
                         {% if isStart %}
                             <span>Bem vindo ao jogo! Para darmos inicio, digite seu nome.</span>
                         {% else %}
-                            <span>{{ model.Text }}</span>
+                            {% if model is not none%}
+                                <span>{{ model.Text }}</span>
+                            {% else %}
+                                <span>Ocorreu um erro interno. Favor iniciar novamente.</span><br>
+                                <span>Description: model is null</span>
+                            {% endif %}
                         {% endif %}
                     </div>
                     <form action="/game" method="POST">
@@ -25,8 +30,13 @@
                                     <input type="hidden" name="texto" value="Bem vindo ao jogo! Para darmos inicio, digite seu nome.">
                                     <input type="hidden" name="isStart" value="Bem vindo ao jogo! Para darmos inicio, digite seu nome.">
                                 {% else %}
-                                    <input type="text" name="resposta" class="form-control" id="inputAnswer" placeholder="Resposta">
-                                    <input type="hidden" name="texto" value="{{ model.Text }}">
+                                    {% if model is not none%}
+                                            {% for btnDscrp in model.BtnDescrptions%}
+                                                <input type="text" name="{{ btnDscrp }}" class="form-control" id="inputAnswer" placeholder="{{ btnDscrp }}">
+                                            {% endfor %}
+                                            <input type="hidden" name="BtnsDscrp" class="form-control" id="inputAnswer" placeholder="{{ btnDscrp }}">
+                                            <input type="hidden" name="texto" value="{{ model.Text }}">
+                                    {% endif %}
                                 {% endif %}
                                 <button type="submit" class="form-control btn btn-primary mb-2">Submit</button>
                             </div>

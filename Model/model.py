@@ -4,12 +4,22 @@ class model(ABC):
     
     @property
     @abstractmethod
-    def Text(self):
+    def Text(self) -> str:
         raise NotImplementedError
 
     @property
     @abstractmethod
-    def Username(self):
+    def Username(self) -> str:
+        raise NotImplementedError
+    
+    @property
+    @abstractmethod
+    def BtnQtd(self) -> int:
+        raise NotImplementedError
+
+    @property
+    @abstractmethod
+    def BtnDescrptions(self) -> list:
         raise NotImplementedError
 
     def __init__(self):

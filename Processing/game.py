@@ -16,4 +16,8 @@ class game():
         return Modelo
 
     def notFirstPost(self) -> model:
-        return texto( 'oi', 'tchau') 
+        Modelo = model()
+
+        #TODO Do something with model
+
+        return Modelo 
