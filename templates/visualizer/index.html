@@ -10,11 +10,10 @@
     <body>
         <canvas id="viewport" width="1300" height="500"></canvas>
         <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js" crossorigin="anonymous"></script>
-        <script type="text/javascript" src="js/arbor.js"></script>
-        <script type="text/javascript" src="js/graphics.js"></script>
-        <script type="text/javascript" src="js/renderer.js"></script>
+        <script type="text/javascript" src="{{ url_for('static', filename="js/arbor.js")}}"></script>
+        <script type="text/javascript" src="{{ url_for('static', filename="js/graphics.js")}}"></script>
+        <script type="text/javascript" src="{{ url_for('static', filename="js/renderer.js")}}"></script>
         <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-        <script language="javascript" type="text/javascript" src="js/myGrafo.js"></script>
-        <script type="text/javascript" src="js/grafo/teste.json"></script>
+        <script language="javascript" type="text/javascript" src="{{ url_for('static', filename="js/myGrafo.js")}}"></script>
     </body>
 </html>
