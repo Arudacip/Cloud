@@ -48,6 +48,13 @@ def game_post():
         Modelo = jogo.notFirstPost()
     
     return render_template('game.html', model=Modelo)
+@app.route('/game/visualizer')
+def game_visualizer():
+    '''
+        Visualizar do grafo do jogo
+    '''
+    return render_template('visualizer/index.html')
+
 
 '''@app.route('/api/<path:path>', methods=['GET']) #Impede que a API seja acessa por browser
 def error_OnlyPost():
