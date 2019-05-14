@@ -1,0 +1,27 @@
+[
+
+    {
+        "Fase":"",
+        "Buttons":[
+            {
+                "Label":"",
+                "Action":"",
+                "Prob":""
+            },
+            {
+                "Label":"",
+                "Action":"",
+                "Prob":""
+            }
+        ],
+        "Texto":"",
+        "Personagem":[
+            {
+                "Vida":0,
+                "Nome":"",
+                "FAtq":0
+            }
+        ]
+    }
+
+]
