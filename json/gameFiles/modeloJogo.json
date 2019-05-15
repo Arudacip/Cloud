@@ -1,8 +1,9 @@
 [
 
     {
+        "Username":"",
         "Fase":"",
-        "Buttons":[
+        "buttonsList":[
             {
                 "Label":"",
                 "Action":"",
@@ -15,13 +16,11 @@
             }
         ],
         "Texto":"",
-        "Personagem":[
-            {
+        "Personagem":{
                 "Vida":0,
                 "Nome":"",
                 "FAtq":0
             }
-        ]
     }
 
 ]

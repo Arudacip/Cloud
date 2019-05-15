@@ -6,15 +6,17 @@
     <body>
         
             <div class="w-100 h-100 p-3">
-                    {% if model %}
-                    <span>Jogando como: {{ model.Username }}</span>
+                    {% if isStart  %}
+                        <span>Jogando como: {{ model.Username }}</span>
                     {% endif %}
                     <div class="overflow-auto p-3 mb-3 mb-md-0 mr-md-3 bg-light" style="width: 100%; height: 83%;">
                         {% if isStart %}
                             <span>Bem vindo ao jogo! Para darmos inicio, digite seu nome.</span>
                         {% else %}
                             {% if model is not none%}
-                                <span>{{ model.Text }}</span>
+                            {% autoescape false %}
+                                <div>{{ model.Texto | replace("|||", "<br/>") }}</div>
+                            {% endautoescape %}
                             {% else %}
                                 <span>Ocorreu um erro interno. Favor iniciar novamente.</span><br>
                                 <span>Description: model is null</span>
@@ -22,23 +24,33 @@
                         {% endif %}
                     </div>
                     <form action="/game" method="POST">
+                        
                         <div class="form-group row mb-2">
                             <label for="inputAnswer" class="col-sm-2 col-form-label">Sua resposta:</label>
                             <div class="col-sm-10 mb-2">
                                 {% if isStart %}
+                                    <input type="hidden" name="fase" value="0">
                                     <input type="text" name="user" class="form-control" id="inputAnswer" placeholder="Resposta">
                                     <input type="hidden" name="texto" value="Bem vindo ao jogo! Para darmos inicio, digite seu nome.">
                                     <input type="hidden" name="isStart" value="Bem vindo ao jogo! Para darmos inicio, digite seu nome.">
+                                    <button type="submit" class="form-control btn btn-primary mb-2">Submit</button>
                                 {% else %}
                                     {% if model is not none%}
-                                            {% for btnDscrp in model.BtnDescrptions%}
-                                                <input type="text" name="{{ btnDscrp }}" class="form-control" id="inputAnswer" placeholder="{{ btnDscrp }}">
-                                            {% endfor %}
+                                            <div class="w-100 h-50 btn-toolbar">
+                                                {% for button in model.buttonsList%}
+                                                    <div class="w-50">
+                                                        <button type="submit" name="{{ button.Label }}" class="form-control" id="inputAnswer"> {{ button.Action }}</button>
+                                                    </div>
+                                                {% endfor %}
+                                            </div>
+                                            <input type="hidden" name="fase" value="{{ model.fase }}">
                                             <input type="hidden" name="BtnsDscrp" class="form-control" id="inputAnswer" placeholder="{{ btnDscrp }}">
-                                            <input type="hidden" name="texto" value="{{ model.Text }}">
+                                            <input type="hidden" name="texto" value="{{ model.Texto }}">
+                                            <input type="hidden" name="user" value="{{ model.player.Username }}">
+                                    {%else%}
+                                        <span> !!!!ERRO!!!!</span>
                                     {% endif %}
                                 {% endif %}
-                                <button type="submit" class="form-control btn btn-primary mb-2">Submit</button>
                             </div>
                         </div>
                     </form>

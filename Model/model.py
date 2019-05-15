@@ -1,25 +1,20 @@
 from abc import ABC, abstractmethod
+from Model.Buttons import Buttons
+from Model.personagem import personagem
 
 class model(ABC):
     
+    buttonsList: list = None
+    player: personagem = None
+
     @property
     @abstractmethod
-    def Text(self) -> str:
+    def Texto(self) -> str:
         raise NotImplementedError
 
     @property
     @abstractmethod
-    def Username(self) -> str:
-        raise NotImplementedError
-    
-    @property
-    @abstractmethod
-    def BtnQtd(self) -> int:
-        raise NotImplementedError
-
-    @property
-    @abstractmethod
-    def BtnDescrptions(self) -> list:
+    def Fase(self) -> int:
         raise NotImplementedError
 
     def __init__(self):

@@ -34,7 +34,8 @@ def game_start():
     '''
         Requisição para iniciar o game
     '''
-    return render_template('game.html', isStart=True)
+    model = texto("", "", 1)
+    return render_template('game.html', isStart=True, model=model)
 
 @app.route('/game', methods=['POST'])
 def game_post():
@@ -42,12 +43,15 @@ def game_post():
         Requisição para iniciar o game
     '''
     jogo = game()
-    if(request.form.get('isStart') is not None):
-        Modelo = jogo.firstPost()
-    else:
-        Modelo = jogo.notFirstPost()
+    #if(request.form.get('isStart') is not None):
+    #    Modelo = jogo.firstPost()
+    #else:
+    Modelo = jogo.notFirstPost()
     
-    return render_template('game.html', model=Modelo)
+    if(Modelo is not None):
+        return render_template('game.html', model=Modelo)
+    else:
+        return render_template('errorOnlyPost.html')
 @app.route('/game/visualizer')
 def game_visualizer():
     '''
