@@ -1,4 +1,4 @@
-var sys = arbor.ParticleSystem(0, 0, 1);
+var sys = arbor.ParticleSystem(200, 200, 0.5);
 sys.parameters({gravity:true});
 sys.renderer = Renderer("#viewport") ;
 var data = {
