@@ -1,37 +1,38 @@
-var sys = arbor.ParticleSystem(200, 100, 5000);
+var sys = arbor.ParticleSystem(0, 0, 1);
 sys.parameters({gravity:true});
 sys.renderer = Renderer("#viewport") ;
 var data = {
     nodes:{
-    fase_1:{'color':'red','shape':'dot','label':'fase_1'},
-    fase_2:{'color':'green','shape':'dot','label':'fase_2'},
-    fase_3:{'color':'green','shape':'dot','label':'fase_3'},
-    fase_4:{'color':'blue','shape':'dot','label':'fase_4'},
-    fase_5:{'color':'blue','shape':'dot','label':'fase_5'},
-    fase_6:{'color':'blue','shape':'dot','label':'fase_6'},
-    fase_7:{'color':'blue','shape':'dot','label':'fase_7'},
-    fase_8:{'color':'blue','shape':'dot','label':'fase_8'},
-    fase_9:{'color':'blue','shape':'dot','label':'fase_9'},
-    fase_a:{'color':'yellow','shape':'dot','label':'fase_a'},
-    fase_b:{'color':'yellow','shape':'dot','label':'fase_b'},
-    fase_c:{'color':'yellow','shape':'dot','label':'fase_c'},
-    fase_d:{'color':'yellow','shape':'dot','label':'fase_d'},
-    fase_end:{'color':'purple','shape':'dot','label':'fase_end'}
+    fase_1:{'color':'red','shape':'dot','label':'fase1'},
+    fase20:{'color':'green','shape':'dot','label':'fase20'},
+    fase21:{'color':'green','shape':'dot','label':'fase21'},
+    fase22:{'color':'green','shape':'dot','label':'fase23'},
+    fase300:{'color':'blue', 'shape':'dot', 'label':'fase300'},
+    fase301:{'color':'blue', 'shape':'dot', 'label':'fase301'},
+    fase302:{'color':'blue', 'shape':'dot', 'label':'fase302'},
+    fase303:{'color':'blue', 'shape':'dot', 'label':'fase303'},
+    fase310:{'color':'blue', 'shape':'dot', 'label':'fase310'},
+    fase311:{'color':'blue', 'shape':'dot', 'label':'fase311'},
+    fase312:{'color':'blue', 'shape':'dot', 'label':'fase312'},
+    fase313:{'color':'blue', 'shape':'dot', 'label':'fase313'},
+    fase320:{'color':'blue', 'shape':'dot', 'label':'fase320'},
+    fase321:{'color':'blue', 'shape':'dot', 'label':'fase321'},
+    fase322:{'color':'blue', 'shape':'dot', 'label':'fase322'},
+    fase323:{'color':'blue', 'shape':'dot', 'label':'fase323'},
+    fase400:{'color':'yellow', 'shape':'dot', 'label':'fase400'},
+    fase401:{'color':'yellow', 'shape':'dot', 'label':'fase401'},
+    fase402:{'color':'yellow', 'shape':'dot', 'label':'fase402'},
+    faseFinal:{'color':'purple', 'shape':'dot', 'label':'faseFinal'}
     },
     edges:{
-        fase_1:{ fase_2:{}, fase_3:{} },
-        fase_2: {fase_4:{}, fase_5:{}, fase_6:{}},
-        fase_3: {fase_7:{}, fase_8:{}, fase_9:{}},
-        fase_4: {fase_a:{}, fase_b: {}},
-        fase_5: {fase_a:{}, fase_b: {}},
-        fase_6: {fase_a:{}, fase_b: {}},
-        fase_7: {fase_c:{}, fase_d: {}},
-        fase_8: {fase_c:{}, fase_d: {}},
-        fase_9: {fase_c:{}, fase_d: {}},
-        fase_a: {fase_end:{}},
-        fase_b: {fase_end:{}},
-        fase_c: {fase_end:{}},
-        fase_d: {fase_end:{}}
+        fase_1:{ fase20:{}, fase21:{}, fase22:{ }},
+        fase20:{ fase300:{}, fase301:{}, fase302:{}, fase303:{}},
+        fase21:{ fase310:{}, fase311:{}, fase312:{}, fase313:{}},
+        fase22:{ fase320:{}, fase321:{}, fase322:{}, fase323:{}},
+        fase400:{ fase300:{}, fase311:{}, fase322:{}, fase320:{}},
+        fase401:{ fase310:{}, fase301:{}, fase323:{}, fase313:{}},
+        fase402:{ fase303:{}, fase321:{}, fase302:{}, fase312:{}},
+        faseFinal:{ fase400:{}, fase401:{}, fase402:{ }}
     }
     };
 sys.graft(data);
