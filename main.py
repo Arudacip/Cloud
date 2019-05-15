@@ -51,7 +51,7 @@ def game_post():
     if(Modelo is not None):
         return render_template('game.html', model=Modelo)
     else:
-        return render_template('errorOnlyPost.html')
+        return render_template('errorNotImplemented.html')
 @app.route('/game/visualizer')
 def game_visualizer():
     '''

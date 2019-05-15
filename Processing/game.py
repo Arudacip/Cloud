@@ -23,6 +23,4 @@ class game():
         fase = request.form.get('fase')
         if(fase == '0'): #da fase 0 para a fase 1
             Modelo = self.faseCtrl.criarFase1(request.form.get('texto'), request.form.get('user'))
-        
-
         return Modelo 
