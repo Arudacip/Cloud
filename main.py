@@ -4,6 +4,8 @@ from flask import Flask, render_template, request
 from flask_sockets import Sockets
 from jsonConverter import convertToJson
 
+from DataBase.DataAccess.MySQL.MySQLDB import mySQL
+
 from Model.texto import texto
 from Model.model import model
 
@@ -13,6 +15,16 @@ from Processing.game import game
 app = Flask(__name__)
 app.debug = 'DEBUG' in os.environ
 sockets = Sockets(app)
+
+@app.route('/beta/api/testeEnvioBD')
+def testeConnexBD():
+    '''
+        Envia algum dado de teste para o banco de dados
+    '''
+    banco = mySQL()
+    banco.autoCommit = True
+    banco.execModQuery("INSERT INTO Teste VALUES (0)")
+    pass
 
 @app.route('/')
 def hello():
