@@ -21,9 +21,8 @@ def testeConnexBD():
     '''
         Envia algum dado de teste para o banco de dados
     '''
-    banco = mySQL()
-    banco.autoCommit = True
-    banco.execModQuery("INSERT INTO Teste VALUES (0)")
+    banco = mySQL(True)
+    banco.execModQuery("INSERT INTO Teste VALUES (0, 0)")
     pass
 
 @app.route('/')
