@@ -63,17 +63,13 @@ def game_post():
         return render_template('game.html', model=Modelo)
     else:
         return render_template('errorNotImplemented.html')
+        
 @app.route('/game/visualizer')
 def game_visualizer():
     '''
         Visualizar do grafo do jogo
     '''
     return render_template('visualizer/index.html')
-
-
-'''@app.route('/api/<path:path>', methods=['GET']) #Impede que a API seja acessa por browser
-def error_OnlyPost():
-    return render_template('errorOnlyPost.html')'''
 
 if __name__ == '__main__':
     app.debug = True

@@ -3,12 +3,15 @@ from Model.model import model
 from Model.personagem import personagem
 from Model.Buttons import Buttons
 
-class fase1(model):
+from Model.fases.DB_Models.faseModel import faseModel
+from Model.fases.DB_Models.faseLigacao import faseLigacao
+
+class Logical_Inicio(model):
     '''
-        Classe que contém os dados da fase 1
+        Classe que contém a implementação lógica da fase1
     '''
     Texto: str = None
-    Fase: str = None
+    Fase: faseModel = None
     player: personagem = personagem()
     buttonsList: list = None
 
