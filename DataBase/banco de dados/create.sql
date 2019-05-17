@@ -34,7 +34,7 @@ CREATE TABLE Fases
     ShapeFase varchar(50) not null,
     NomeFase varchar(250) not null,
     LabelFase varchar(20) not null,
-    classNameFaseImplementation varchar(250) not null
+    Texto CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL
 
 );
 
@@ -43,4 +43,18 @@ CREATE TABLE FaseLigacoes
     ID int AUTO_INCREMENT primary key,
     CodeFaseAtual int not null,
     CodeProximaFase int not null
+);
+
+CREATE TABLE Buttons
+(
+    Code int primary key,
+    ButtonDescription varchar(20) not null,
+    CodeFase int not null
+);
+
+Create TABLE Actions
+(
+    ID int AUTO_INCREMENT primary key,
+    CodeButton int not null,
+    ActionDescription varchar(25) not null
 );

@@ -54,9 +54,6 @@ def game_post():
         Requisição para iniciar o game
     '''
     jogo = game()
-    #if(request.form.get('isStart') is not None):
-    #    Modelo = jogo.firstPost()
-    #else:
     Modelo = jogo.notFirstPost()
     
     if(Modelo is not None):

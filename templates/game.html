@@ -1,12 +1,12 @@
 <html>
     <head>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-        <title>HTML Game running on heroku!</title>
+        <title>Arudacip Game</title>
     </head>
     <body>
         
             <div class="w-100 h-100 p-3">
-                    {% if isStart  %}
+                    {% if not isStart  %}
                         <span>Jogando como: {{ model.Username }}</span>
                     {% endif %}
                     <div class="overflow-auto p-3 mb-3 mb-md-0 mr-md-3 bg-light" style="width: 100%; height: 83%;">
@@ -15,7 +15,7 @@
                         {% else %}
                             {% if model is not none%}
                             {% autoescape false %}
-                                <div>{{ model.Texto | replace("|||", "<br/>") }}</div>
+                                <div>{{ model.Fase.Texto | replace("|||", "<br/>") }}</div>
                             {% endautoescape %}
                             {% else %}
                                 <span>Ocorreu um erro interno. Favor iniciar novamente.</span><br>
@@ -37,15 +37,15 @@
                                 {% else %}
                                     {% if model is not none%}
                                             <div class="w-100 h-50 btn-toolbar">
-                                                {% for button in model.buttonsList%}
+                                                {% for button in model.Fase.btnsList%}
                                                     <div class="w-50">
-                                                        <button type="submit" name="{{ button.Label }}" class="form-control" id="inputAnswer"> {{ button.Action }}</button>
+                                                        <button type="submit" name="{{ button.ButtonDescription }}" class="form-control" id="inputAnswer"> {{ button.Action }}</button>
                                                     </div>
                                                 {% endfor %}
                                             </div>
-                                            <input type="hidden" name="fase" value="{{ model.fase }}">
+                                            <input type="hidden" name="fase" value="{{ model.Fase.Code }}">
                                             <input type="hidden" name="BtnsDscrp" class="form-control" id="inputAnswer" placeholder="{{ btnDscrp }}">
-                                            <input type="hidden" name="texto" value="{{ model.Texto }}">
+                                            <input type="hidden" name="texto" value="{{ model.Fase.texto }}">
                                             <input type="hidden" name="user" value="{{ model.player.Username }}">
                                     {%else%}
                                         <span> !!!!ERRO!!!!</span>

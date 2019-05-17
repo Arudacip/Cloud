@@ -1,65 +1,55 @@
-from abc import ABC, abstractmethod
-from Model.Buttons import Buttons
 from Model.personagem import personagem
 from Model.fases.DB_Models.faseLigacao import faseLigacao
+from Model.fases.DB_Models.buttonModel import buttonModel
 
-class faseModel(ABC):
+from DataBase.DataAccess.MySQL.MySQLDB import mySQL
 
-    @property
-    @abstractmethod
-    def FaseLigacao() -> lista:
-        '''
-            Lista de ligações que a fase realiza
-        '''
-        pass
+class faseModel():
 
-    @property
-    @abstractmethod
-    def classNameFaseImplementation() -> str:
-        '''
-            Nome da classe da fase
-        '''
-        pass
+    btnsList: list = None
+    
+    FaseLigacao: list = None
 
-    @property
-    @abstractmethod    
-    def Code() -> int:
-        '''
-            Codigo único da fase
-        '''
-        pass
+    Texto: str = None
 
-    @property
-    @abstractmethod
-    def CorFase() -> str:
-        '''
-            Cor da fase, seguindo principios do atributo COLOR do arborJS
-        '''
-        pass
+    Code:int = None
 
-    @property
-    @abstractmethod
-    def LabelFase() -> str:
-        '''
-            Label da fase, nome curto
-        '''
-        pass
+    CorFase: str = None
 
-    @property
-    @abstractmethod
-    def NomeFase() -> str:
-        '''
-            Nome da fase
-        '''
-        pass
+    LabelFase: str = None
 
-    @property
-    @abstractmethod 
-    def ShapeFase() -> str:
-        '''
-            Shape da fase que deverá ser feito no grafo
-        '''
-        pass
+    NomeFase: str = None
+
+    ShapeFase: str = None
+
+    def inserirNoBanco(self):
+        banco = mySQL(False)
+
+        query = " INSERT INTO Fases (Code, CorFase, ShapeFase, NomeFase, LabelFase, classNameFaseImplementation) VALUES "
+        query += f" ( {self.Code}, '{self.CorFase}', '{self.ShapeFase}', '{self.NomeFase}', '{self.LabelFase}', '{self.classNameFaseImplementation}' )"
+
+        banco.execModQuery(query)
+
+        queryLigacoes = "INSERT INTO FaseLigacoes (CodeFaseAtual, CodeProximaFase) VALUES "
+
+        for ligacao in self.FaseLigacao:
+                queryLigacoes += f" ( '{ligacao.CodeFaseAtual}', '{ligacao.CodeProximaFase}'  ) "
+
+    def buscarNoBanco(self, code: int):
+        banco = mySQL(False)
+        query = f" SELECT CorFase, ShapeFase, NomeFase, LabelFase, texto FROM Fases WHERE Code = {code}"
+        resultTuple = banco.execReadQuery(query)
+        for result in resultTuple:
+            self.CorFase = result[0]
+            self.ShapeFase = result[1]
+            self.NomeFase = result[2]
+            self.LabelFase = result[3]
+            self.Texto = result[4]
+            self.Code = code
+
+        self.FaseLigacao = faseLigacao(0,0,0).buscarNoBanco(code)
+        self.btnsList = buttonModel().buscarNoBancoPorFase(code)
+        
 
     def __init__(self):
         pass

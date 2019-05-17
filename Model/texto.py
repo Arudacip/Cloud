@@ -1,9 +1,8 @@
-from abc import ABC, abstractmethod
-from Model.model import model
+
 from Model.personagem import personagem
 from Model.Buttons import Buttons
 
-class texto(model):
+class texto():
     '''
         Classe que contém um texto simples
     '''
