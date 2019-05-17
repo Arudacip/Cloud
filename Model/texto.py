@@ -1,6 +1,5 @@
 
 from Model.personagem import personagem
-from Model.Buttons import Buttons
 
 class texto():
     '''

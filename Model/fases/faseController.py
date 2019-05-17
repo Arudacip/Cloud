@@ -1,6 +1,5 @@
 from Model.fases.DB_Models.faseModel import faseModel
 from Model.model import model
-from Model.Buttons import Buttons
 
 class faseControler():
 

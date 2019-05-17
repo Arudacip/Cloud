@@ -3,7 +3,6 @@ from flask import request
 from Model.texto import texto
 from Model.model import model
 from Model.personagem import personagem
-from Model.Buttons import Buttons
 from Model.fases.faseController import faseControler
 
 class game():
@@ -21,6 +20,6 @@ class game():
     def notFirstPost(self) -> model:
         Modelo = None
         fase = request.form.get('fase')
-        if(fase == '0'): #da fase 0 para a fase 1
+        if(fase == '-1'): #da fase -1 para a fase 0 (Inicio de jogo)
             Modelo = self.faseCtrl.criarFase1(request.form.get('texto'), request.form.get('user'))
         return Modelo 

@@ -29,7 +29,7 @@
                             <label for="inputAnswer" class="col-sm-2 col-form-label">Sua resposta:</label>
                             <div class="col-sm-10 mb-2">
                                 {% if isStart %}
-                                    <input type="hidden" name="fase" value="0">
+                                    <input type="hidden" name="fase" value="-1">
                                     <input type="text" name="user" class="form-control" id="inputAnswer" placeholder="Resposta">
                                     <input type="hidden" name="texto" value="Bem vindo ao jogo! Para darmos inicio, digite seu nome.">
                                     <input type="hidden" name="isStart" value="Bem vindo ao jogo! Para darmos inicio, digite seu nome.">
@@ -39,7 +39,7 @@
                                             <div class="w-100 h-50 btn-toolbar">
                                                 {% for button in model.Fase.btnsList%}
                                                     <div class="w-50">
-                                                        <button type="submit" name="{{ button.ButtonDescription }}" class="form-control" id="inputAnswer"> {{ button.Action }}</button>
+                                                        <button type="submit" name="{{ button.ButtonDescription }}" class="form-control" id="inputAnswer"> {{ button.ButtonDescription }}</button>
                                                     </div>
                                                 {% endfor %}
                                             </div>
