@@ -5,32 +5,21 @@ class buttonModel():
     Code: int  = None
     ButtonDescription: str = None
     CodeFase: int = None
-
-    def buscarNoBanco(self, code: int):
-        
-        banco = mySQL(False)
-        query = f" SELECT ButtonDescription, ID, ActionDescription, CodeFase FROM Buttons INNER JOIN Actions ON CodeButton = Code WHERE Code = {code}"
-        resultTuple = banco.execReadQuery(query)
-
-        self.btnActions = list()
-
-        for result in resultTuple:
-            self.ButtonDescription = result[0]
-            self.CodeFase = result[3]
-            self.Code = code
+    proximaFase: int = None
 
     def buscarNoBancoPorFase(self, codeFase: int) -> list:
         
         listBtns = list()
 
         banco = mySQL(False)
-        query = f" SELECT Code, ButtonDescription, ID, ActionDescription, proximaFase FROM Buttons WHERE CodeFase = {codeFase}"
+        query = f" SELECT Code, ButtonDescription, proximaFase FROM Buttons WHERE CodeFase = {codeFase}"
         resultTuple = banco.execReadQuery(query)
 
         for result in resultTuple:
             btn = buttonModel()
             btn.Code = result[0]
             btn.ButtonDescription = result[1]
+            btn.proximaFase = result[2]
             btn.CodeFase = codeFase
 
             listBtns.append(btn)

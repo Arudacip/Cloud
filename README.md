@@ -16,7 +16,7 @@ Essa rota apresenta um jogo
 
 ### Visualizer
 
-- Rota: '/Visualizer'
+- Rota: '/visualizer'
 
 Essa rota apresenta um grafo, contendo todas as fases do jogo
 

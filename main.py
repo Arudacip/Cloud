@@ -60,6 +60,20 @@ def game_post():
         return render_template('game.html', model=Modelo)
     else:
         return render_template('errorNotImplemented.html')
+
+@app.route('/game/<proximaFase>', methods=['POST'])
+def game_nextFase(proximaFase):
+    '''
+        Requisição para ir para a próxima fase
+    '''
+    jogo = game()
+    Modelo = jogo.nextFase(request.form.get('nextFase'))
+    
+    if(Modelo is not None):
+        return render_template('game.html', model=Modelo)
+    else:
+        return render_template('errorNotImplemented.html')
+    pass
         
 @app.route('/game/visualizer')
 def game_visualizer():

@@ -20,6 +20,13 @@ class game():
     def notFirstPost(self) -> model:
         Modelo = None
         fase = request.form.get('fase')
+        nxtFase = request.form.get('nextFase')
         if(fase == '-1'): #da fase -1 para a fase 0 (Inicio de jogo)
-            Modelo = self.faseCtrl.criarFase1(request.form.get('texto'), request.form.get('user'))
+            Modelo = self.faseCtrl.criarFaseN1(request.form.get('texto'), request.form.get('user'))
+        if(fase == '0'):
+            Modelo = self.faseCtrl.criarFaseN2(request.form.get('texto'), request.form.get('user'), nxtFase)
+        return Modelo 
+
+    def nextFase(self, nxtFase:str ) -> model:
+        Modelo = self.faseCtrl.criarFaseN2(request.form.get('texto'), request.form.get('user'), nxtFase)
         return Modelo 
