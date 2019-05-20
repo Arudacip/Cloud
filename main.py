@@ -1,6 +1,6 @@
 import os
 
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, Response
 from flask_sockets import Sockets
 from jsonConverter import convertToJson
 
@@ -46,7 +46,7 @@ def api_Fases():
     '''
         Requisição para retornar o contexto de fases do banco de dados
     '''
-    return convertFasesToJson()
+    return Response(convertFasesToJson(), mimetype='application/json')
 
 
 @app.route('/game', methods=['GET'])
