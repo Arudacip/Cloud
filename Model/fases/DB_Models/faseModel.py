@@ -4,6 +4,10 @@ from Model.fases.DB_Models.buttonModel import buttonModel
 
 from DataBase.DataAccess.MySQL.MySQLDB import mySQL
 
+from jsonConverter import convertToJson
+
+from json import dumps
+
 class faseModel():
 
     btnsList: list = None
@@ -35,6 +39,23 @@ class faseModel():
         for ligacao in self.FaseLigacao:
                 queryLigacoes += f" ( '{ligacao.CodeFaseAtual}', '{ligacao.CodeProximaFase}'  ) "
 
+    def buscarTodos(self) -> list:
+        fases = list()
+        banco = mySQL(False)
+        query = f" SELECT CorFase, ShapeFase, NomeFase, LabelFase, texto, Code FROM Fases"
+        resultTuple = banco.execReadQuery(query)
+        for result in resultTuple:
+            fase = faseModel()
+            fase.CorFase = result[0]
+            fase.ShapeFase = result[1]
+            fase.NomeFase = result[2]
+            fase.LabelFase = result[3]
+            fase.Texto = result[4]
+            fase.Code = result[5]
+            fase.FaseLigacao = faseLigacao(0,0,0).buscarNoBanco(fase.Code)
+            fases.append(fase)
+        return fases
+
     def buscarNoBanco(self, code: int):
         banco = mySQL(False)
         query = f" SELECT CorFase, ShapeFase, NomeFase, LabelFase, texto FROM Fases WHERE Code = {code}"
@@ -49,7 +70,14 @@ class faseModel():
 
         self.FaseLigacao = faseLigacao(0,0,0).buscarNoBanco(code)
         self.btnsList = buttonModel().buscarNoBancoPorFase(code)
-        
 
     def __init__(self):
         pass
+
+    def toJSON(self):
+        return dumps(self, default=lambda o: o.__dict__, sort_keys=True, indent=4)
+
+def convertFasesToJson() -> str:
+    fases = faseModel().buscarTodos()
+
+    return dumps([ fse.__dict__ for fse in fases ])

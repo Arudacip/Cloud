@@ -9,6 +9,8 @@ from DataBase.DataAccess.MySQL.MySQLDB import mySQL
 from Model.texto import texto
 from Model.model import model
 
+from Model.fases.DB_Models.faseModel import convertFasesToJson
+
 from Processing.game import game
 
 #Hello World
@@ -38,6 +40,13 @@ def api_HelloWorld():
         Requisição simples de hello world para testar a API
     '''
     return convertToJson(HelloWorld="Hello World! Retorno em JSON da API de testes!")
+
+@app.route('/api/game/fases', methods=['POST', 'GET'])
+def api_Fases():
+    '''
+        Requisição para retornar o contexto de fases do banco de dados
+    '''
+    return convertFasesToJson()
 
 
 @app.route('/game', methods=['GET'])
