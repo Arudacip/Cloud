@@ -26,12 +26,17 @@ Essa rota apresenta um grafo, contendo todas as fases do jogo
 
 Essa rota apresenta a API
 
+### Contexto fases
+
+- Rota: '/game/fases'
+
+Essa rota retorna o contexto do banco de dados das fases do jogo
+
 ### Hello World
 
 - Rota: '/HelloWorld'
 
 Essa rota mostra um JSON Hello World
-
 
 ## Teste
 

@@ -81,3 +81,10 @@ def convertFasesToJson() -> str:
     fases = faseModel().buscarTodos()
 
     return dumps([ fse.__dict__ for fse in fases ])
+
+def convertFasesToArborJSData() -> str:
+    pass
+
+class graphDataFase():
+    nodes: list = None
+    edges: list = None

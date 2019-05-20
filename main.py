@@ -91,6 +91,13 @@ def game_visualizer():
     '''
     return render_template('visualizer/index.html')
 
+@app.route('/game/visualizer/beta')
+def game_visualizerBeta():
+    '''
+        Visualizar do grafo do jogo
+    '''
+    return render_template('visualizer/allFases.html', jsonData=convertFasesToJson())
+
 if __name__ == '__main__':
     app.debug = True
     app.run(host = 'localhost', port=5050)
