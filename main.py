@@ -39,7 +39,7 @@ def api_HelloWorld():
     '''
         Requisição simples de hello world para testar a API
     '''
-    return convertToJson(HelloWorld="Hello World! Retorno em JSON da API de testes!")
+    return Response(convertToJson(HelloWorld="Hello World! Retorno em JSON da API de testes!"), mimetype='application/json')
 
 @app.route('/api/game/fases', methods=['POST', 'GET'])
 def api_Fases():
