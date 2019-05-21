@@ -8,3 +8,5 @@ def getMySQLConn() -> mysql.connector.connection.MySQLConnection:
         database="kyN4AsHckz"
     )
     return mydb
+
+#Erro no MYSQL
