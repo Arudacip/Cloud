@@ -1,5 +1,5 @@
 
-from Model.personagem import personagem
+from Model.DB_Models.Personagem import personagem
 
 class texto():
     '''

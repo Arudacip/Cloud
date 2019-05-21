@@ -2,8 +2,8 @@ from flask import request
 
 from Model.texto import texto
 from Model.model import model
-from Model.personagem import personagem
-from Model.fases.faseController import faseControler
+from Model.DB_Models.Personagem import personagem
+from Processing.faseController import faseControler
 
 class game():
     faseCtrl: faseControler = None

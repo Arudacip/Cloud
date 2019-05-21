@@ -1,4 +1,4 @@
-from Model.personagem import personagem
+from Model.DB_Models.Personagem import personagem
 from Model.DB_Models.faseModel import faseModel
 
 class model():

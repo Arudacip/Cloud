@@ -1,5 +1,5 @@
-from Model.fases.DB_Models.faseLigacao import faseLigacao
-from Model.fases.DB_Models.buttonModel import buttonModel
+from Model.DB_Models.faseLigacao import faseLigacao
+from Model.DB_Models.buttonModel import buttonModel
 
 from DataBase.DataAccess.MySQL.MySQLDB import mySQL
 
