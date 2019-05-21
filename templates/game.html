@@ -27,17 +27,19 @@
                             <label for="inputAnswer" class="col-sm-2 col-form-label">Sua resposta:</label>
                             <div class="col-sm-10 mb-2">
                                 {% if isStart %}
-                                    <input type="hidden" name="fase" value="-1" form="form_start">
-                                    <input type="text" name="user" class="form-control" id="inputAnswer" placeholder="Resposta" form="form_start">
-                                    <input type="hidden" name="texto" value="Bem vindo ao jogo! Para darmos inicio, digite seu nome." form="form_start">
-                                    <input type="hidden" name="isStart" value="Bem vindo ao jogo! Para darmos inicio, digite seu nome." form="form_start">
-                                    <button type="submit" class="form-control btn btn-primary mb-2" form="form_start">Submit</button>
+                                    <form action="/game/0" id="form_{{ button.proximaFase }}" method="POST"></form>
+                                        <input type="text" name="user" class="form-control" id="inputAnswer" placeholder="Resposta" form="form_start">
+                                        <input type="hidden" name="fase" value="-1" form="form_start">
+                                        <input type="hidden" name="texto" value="Bem vindo ao jogo! Para darmos inicio, digite seu nome." form="form_start">
+                                        <input type="hidden" name="isStart" value="Bem vindo ao jogo! Para darmos inicio, digite seu nome." form="form_start">
+                                        <button type="submit" class="form-control btn btn-primary mb-2" form="form_start">Submit</button>
+                                    </form>
                                 {% else %}
                                     {% if model is not none%}
                                             <div class="w-100 h-50 btn-toolbar">
                                                 {% for button in model.Fase.btnsList%}
                                                     <div class="w-50">
-                                                        <form action="/game/{{ button.proximaFase }}" id="form_{{ button.proximaFase }}" method="POST">>
+                                                        <form action="/game/{{ button.proximaFase }}" id="form_{{ button.proximaFase }}" method="POST">
                                                             <button type="submit" name="{{ button.ButtonDescription }}" value="{{ button.proximaFase }}" class="form-control" id="inputAnswer"> {{ button.ButtonDescription }}</button>
                                                             <input  type="hidden" name="nextFase" value="{{ model.Fase.texto }}">
                                                             <input  type="hidden" name="user" value="{{ model.player.Username }}">

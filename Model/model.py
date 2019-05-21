@@ -1,5 +1,5 @@
 from Model.personagem import personagem
-from Model.fases.DB_Models.faseModel import faseModel
+from Model.DB_Models.faseModel import faseModel
 
 class model():
     

@@ -9,7 +9,7 @@ from DataBase.DataAccess.MySQL.MySQLDB import mySQL
 from Model.texto import texto
 from Model.model import model
 
-from Model.fases.DB_Models.faseModel import convertFasesToJson
+from Model.DB_Models.faseModel import convertFasesToJson
 
 from Processing.game import game
 
