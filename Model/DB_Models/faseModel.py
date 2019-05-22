@@ -52,7 +52,7 @@ class faseModel():
             fase.LabelFase = result[3]
             fase.Texto = result[4]
             fase.Code = result[5]
-            fase.FaseLigacao = faseLigacao(0,0,0).buscarNoBanco(fase.Code)
+            #fase.FaseLigacao = faseLigacao(0,0,0).buscarNoBanco(fase.Code)
             fases.append(fase)
         return fases
 
