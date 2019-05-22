@@ -11,10 +11,10 @@ class game():
         self.faseCtrl = faseControler()
     
     def firstPost(self) -> model:
-        resposta = request.form.get('user')
-        txt = request.form.get('texto')
+        resposta = ""#request.form.get('user')
+        txt = ""
         txt = txt.strip('Bem vindo ao jogo! Para darmos inicio, digite seu nome.')
-        Modelo = texto( txt , resposta, '0')
+        Modelo = texto( txt , resposta, '-1')
         return Modelo
 
     def notFirstPost(self) -> model:
