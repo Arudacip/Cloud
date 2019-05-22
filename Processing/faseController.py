@@ -19,9 +19,10 @@ class faseControler():
         return mdl
 
     def criarFaseN2(self, texto:str, user: str, nxtFase: str) -> model:
+        txt = texto or "Bem vindo ao jogo! Para darmos inicio, digite seu nome."
         fase = faseModel()
         fase.buscarNoBanco(nxtFase)
-        fase.Texto = texto + "|||" + fase.Texto
+        fase.Texto = txt + "|||" + fase.Texto
 
         mdl = model()
 
