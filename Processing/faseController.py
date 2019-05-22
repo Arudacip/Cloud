@@ -24,7 +24,7 @@ class faseControler():
         txt = texto or "Bem vindo ao jogo! Para darmos inicio, digite seu nome."
         fase = faseModel()
         fase.buscarNoBanco(nxtFase)
-        if(fase.Code < 0 ):
+        if(int(fase.Code) < 0 ):
             mdl.Fase = fase
             return mdl
         fase.Texto = txt + "|||" + fase.Texto
