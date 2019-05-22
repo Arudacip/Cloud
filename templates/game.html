@@ -27,7 +27,7 @@
                             <label for="inputAnswer" class="col-sm-2 col-form-label">Sua resposta:</label>
                             <div class="col-sm-10 mb-2">
                                 {% if isStart %}
-                                    <form action="/game/0" id="form_{{ button.proximaFase }}" method="POST"></form>
+                                    <form action="/game/0" id="form_start" method="POST"></form>
                                         <input type="text" name="user" class="form-control" id="inputAnswer" placeholder="Resposta" form="form_start">
                                         <input type="hidden" name="fase" value="-1" form="form_start">
                                         <input type="hidden" name="texto" value="Bem vindo ao jogo! Para darmos inicio, digite seu nome." form="form_start">
