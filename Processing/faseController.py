@@ -8,7 +8,7 @@ class faseControler():
 
     def criarFaseN1(self, texto: str, user: str) -> model:
         fase = faseModel()
-        fase.buscarNoBanco(0)  
+        fase.buscarNoBanco(0)
         fase.Texto = texto + "|||" + fase.Texto
 
         mdl = model()
