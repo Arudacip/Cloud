@@ -76,6 +76,7 @@ def game_nextFase(proximaFase):
     '''
         Requisição para ir para a próxima fase
     '''
+    #Teste
     jogo = game()
     Modelo = jogo.nextFase(request.form.get('nextFase'))
     
