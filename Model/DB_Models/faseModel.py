@@ -68,7 +68,7 @@ class faseModel():
             self.Texto = result[4]
             self.Code = code
 
-        self.FaseLigacao = faseLigacao(0,0,0).buscarNoBanco(code)
+        #self.FaseLigacao = faseLigacao(0,0,0).buscarNoBanco(code)
         self.btnsList = buttonModel().buscarNoBancoPorFase(code)
 
     def __init__(self):
