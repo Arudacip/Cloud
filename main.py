@@ -54,8 +54,9 @@ def game_start():
     '''
         Requisição para iniciar o game
     '''
-    model = texto("", "", 1)
-    return render_template('game.html', isStart=True)
+    jogo = game()
+    model = jogo.firstPost()
+    return render_template('game.html', isStart=True, model=model)
 
 @app.route('/game', methods=['POST'])
 def game_post():
