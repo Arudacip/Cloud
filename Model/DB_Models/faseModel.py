@@ -57,19 +57,23 @@ class faseModel():
         return fases
 
     def buscarNoBanco(self, code: int):
-        banco = mySQL(False)
-        query = f" SELECT CorFase, ShapeFase, NomeFase, LabelFase, texto FROM Fases WHERE Code = {code}"
-        resultTuple = banco.execReadQuery(query)
-        for result in resultTuple:
-            self.CorFase = result[0]
-            self.ShapeFase = result[1]
-            self.NomeFase = result[2]
-            self.LabelFase = result[3]
-            self.Texto = result[4]
-            self.Code = code
+        try:
+            banco = mySQL(False)
+            query = f" SELECT CorFase, ShapeFase, NomeFase, LabelFase, texto FROM Fases WHERE Code = {code}"
+            resultTuple = banco.execReadQuery(query)
+            for result in resultTuple:
+                self.CorFase = result[0]
+                self.ShapeFase = result[1]
+                self.NomeFase = result[2]
+                self.LabelFase = result[3]
+                self.Texto = result[4]
+                self.Code = code
 
-        #self.FaseLigacao = faseLigacao(0,0,0).buscarNoBanco(code)
-        self.btnsList = buttonModel().buscarNoBancoPorFase(code)
+            #self.FaseLigacao = faseLigacao(0,0,0).buscarNoBanco(code)
+            self.btnsList = buttonModel().buscarNoBancoPorFase(code)
+        except Exception:
+            self.Code = -1
+        
 
     def __init__(self):
         pass

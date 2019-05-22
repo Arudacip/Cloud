@@ -19,12 +19,15 @@ class faseControler():
         return mdl
 
     def criarFaseN2(self, texto:str, user: str, nxtFase: str) -> model:
+        mdl = model()
+
         txt = texto or "Bem vindo ao jogo! Para darmos inicio, digite seu nome."
         fase = faseModel()
         fase.buscarNoBanco(nxtFase)
+        if(fase.Code < 0 ):
+            mdl.Fase = fase
+            return mdl
         fase.Texto = txt + "|||" + fase.Texto
-
-        mdl = model()
 
         mdl.Fase = fase
         mdl.player = None

@@ -28,5 +28,7 @@ class game():
         return Modelo 
 
     def nextFase(self, nxtFase:str ) -> model:
-        Modelo = self.faseCtrl.criarFaseN2(request.form.get('texto'), request.form.get('user'), nxtFase)
+        Modelo: model = self.faseCtrl.criarFaseN2(request.form.get('texto'), request.form.get('user'), nxtFase)
+        if int(Modelo.Fase.Code) < 0:
+            return None
         return Modelo 
