@@ -7,7 +7,7 @@
         
             <div class="w-100 h-100 p-3">
                     {% if not isStart  %}
-                        <span>Jogando como: {{ model.Username }}</span>
+                        <span>Jogando como: {{ model.player.NomeJogador }}</span>
                     {% endif %}
                     <div class="overflow-auto p-3 mb-3 mb-md-0 mr-md-3 bg-light" style="width: 100%; height: 83%;">
                         {% if isStart %}
@@ -32,7 +32,6 @@
                                         <input type="hidden" name="fase" value="-1" form="form_start">
                                         <input type="hidden" name="nextFase" value="0" form="form_start">
                                         <input type="hidden" name="texto" value="Bem vindo ao jogo! Para darmos inicio, digite seu nome." form="form_start">
-                                        <input type="hidden" name="isStart" value="Bem vindo ao jogo! Para darmos inicio, digite seu nome." form="form_start">
                                         <button type="submit" class="form-control btn btn-primary mb-2" form="form_start">Submit</button>
                                     </form>
                                 {% else %}
@@ -44,7 +43,7 @@
                                                             <button type="submit" name="{{ button.ButtonDescription }}" value="{{ button.proximaFase }}" class="form-control" id="inputAnswer"> {{ button.ButtonDescription }}</button>
                                                             <input  type="hidden" name="nextFase" value="{{ button.proximaFase }}">
                                                             <input  type="hidden" name="texto" value="{{ model.Fase.Texto }}">
-                                                            <input  type="hidden" name="user" value="{{ model.player.Username }}">
+                                                            <input  type="hidden" name="user" value="{{ model.player.ID }}">
                                                         </form>
                                                     </div>
                                                 {% endfor %}

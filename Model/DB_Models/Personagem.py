@@ -16,12 +16,12 @@ class personagem():
     StartGameTime: str = None
 
     def inserirNoBancoStartGame(self) -> int:
-        banco = mySQL(False)
-        time = datetime.datetime.now()
+        banco = mySQL(True)
+        time = str(datetime.datetime.now())[:19]
         query = " INSERT INTO StartGame (NomeJogador, StartGameTime) VALUES "
-        query += f" ( {self.NomeJogador}, '{time}' )"
+        query += f" ( '{self.NomeJogador}', '{time}' )"
 
-        banco.execModQuery(query)
+        x = banco.execModQuery(query)
 
         query = f"SELECT ID FROM StartGame WHERE NomeJogador = '{self.NomeJogador}' AND StartGameTime = '{time}'"
         resultTuple = banco.execReadQuery(query)

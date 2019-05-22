@@ -29,6 +29,14 @@ class game():
 
     def nextFase(self, nxtFase:str ) -> model:
         Modelo: model = self.faseCtrl.criarFaseN2(request.form.get('texto'), request.form.get('user'), nxtFase)
+        if(nxtFase == '0'):
+            player = personagem()
+            player.NomeJogador = request.form.get('user')
+            player.StartGameTime = 'teste'
+            player.inserirNoBancoStartGame()
+        else:
+            player = personagem().buscarNoBanco(request.form.get('user'))
+        Modelo.player = player
         if int(Modelo.Fase.Code) < 0:
             return None
         return Modelo 
