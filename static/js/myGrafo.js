@@ -3,8 +3,8 @@ sys.parameters({gravity:true});
 sys.renderer = Renderer("#viewport") ;
 var data = {
     nodes:{
-    fase_1:{'color':'red','shape':'dot','label':'fase1'},
-    fase20:{'color':'green','shape':'dot','label':'fase20'},
+    fase:{'color':'red','shape':'dot','label':'fase1'},
+    fase:{'color':'green','shape':'dot','label':'fase20'},
     fase21:{'color':'green','shape':'dot','label':'fase21'},
     fase22:{'color':'green','shape':'dot','label':'fase23'},
     fase300:{'color':'blue', 'shape':'dot', 'label':'fase300'},
