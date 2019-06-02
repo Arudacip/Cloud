@@ -26,7 +26,7 @@ class faseModel():
 
     ShapeFase: str = None
 
-    def inserirNoBanco(self):
+    '''def inserirNoBanco(self):
         banco = mySQL(False)
 
         query = " INSERT INTO Fases (Code, CorFase, ShapeFase, NomeFase, LabelFase, classNameFaseImplementation) VALUES "
@@ -37,7 +37,7 @@ class faseModel():
         queryLigacoes = "INSERT INTO FaseLigacoes (CodeFaseAtual, CodeProximaFase) VALUES "
 
         for ligacao in self.FaseLigacao:
-                queryLigacoes += f" ( '{ligacao.CodeFaseAtual}', '{ligacao.CodeProximaFase}'  ) "
+                queryLigacoes += f" ( '{ligacao.CodeFaseAtual}', '{ligacao.CodeProximaFase}'  ) "'''
 
     def buscarTodos(self) -> list:
         fases = list()
@@ -52,7 +52,6 @@ class faseModel():
             fase.LabelFase = result[3]
             fase.Texto = result[4]
             fase.Code = result[5]
-            #fase.FaseLigacao = faseLigacao(0,0,0).buscarNoBanco(fase.Code)
             fases.append(fase)
         return fases
 
@@ -69,7 +68,6 @@ class faseModel():
                 self.Texto = result[4]
                 self.Code = code
 
-            #self.FaseLigacao = faseLigacao(0,0,0).buscarNoBanco(code)
             self.btnsList = buttonModel().buscarNoBancoPorFase(code)
         except Exception:
             self.Code = -1

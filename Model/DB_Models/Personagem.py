@@ -35,12 +35,13 @@ class personagem():
 
     def buscarNoBanco(self, ID: int):
         banco = mySQL(False)
-        query = f" SELECT NomeJogador, StartGameTime FROM Fases WHERE ID = {ID}"
+        query = f" SELECT NomeJogador, StartGameTime FROM StartGame WHERE ID = {ID}"
         resultTuple = banco.execReadQuery(query)
         for result in resultTuple:
             self.NomeJogador = result[0]
             self.StartGameTime = result[1]
             self.ID = ID
+        return self
 
     def __init__(self):
         pass

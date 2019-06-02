@@ -48,6 +48,13 @@ def api_Fases():
     '''
     return Response(convertFasesToJson(), mimetype='application/json')
 
+@app.route('/api/game/arborFases', methods=['POST'])
+def api_arbor_Fases():
+    '''
+        Requisição para retornar um JSON no estilo arborJS referente as fases
+    '''
+    return None
+
 
 @app.route('/game', methods=['GET'])
 def game_start():
